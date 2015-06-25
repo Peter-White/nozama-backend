@@ -72,10 +72,17 @@ app.use('/items', itemsRouter);
 app.use('/users', usersRouter);
 app.use('/', itemsRouter);
 
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+    .use(nib());
+};
 
-
+app.use(stylus.middleware({
+  src: __dirname + '/public',
+  compile: compile
+}));
+>>>>>>> Retrying Checkout Page
 
 
 var server = app.listen(3000, function() {
