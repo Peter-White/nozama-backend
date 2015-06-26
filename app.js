@@ -26,6 +26,11 @@ var mongoStore = new MongoSessionDB({
 
 
 var checkoutRouter = require('./routes/checkout');
+<<<<<<< HEAD
+=======
+var addRouter = require('./routes/add');
+var cartRouter = require('./routes/cart');
+>>>>>>> HORRAY FOR SAAD
 
 //Setup
 var app = express();
@@ -72,6 +77,7 @@ passport.deserializeUser(User.deserializeUser());
 //all routes
 app.use('/auth', auth);
 app.use('/items', itemsRouter);
+app.use('/add', addRouter);
 app.use('/users', usersRouter);
 app.use('/cart', cartRouter);
 app.use('/checkout', checkoutRouter);
@@ -88,6 +94,7 @@ app.use(stylus.middleware({
   compile: compile
 }));
 
+app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(3000, function() {
 
