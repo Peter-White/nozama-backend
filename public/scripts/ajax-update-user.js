@@ -14,12 +14,12 @@
         userName: $('input[name="userame"]').val(),
         phoneNumber: $('input[name="phoneNumber"]').val(),
         emailAddress: $('input[name="emailAddress"]').val(),
-        ddress: $('input[name="address"]').val(),
+        address: $('input[name="address"]').val(),
         password: $('input[name="password"]').val()
       };
       $.ajax({
         method: 'PATCH',
-        url: 'http://localhost:3000/users/' + id,
+        url: 'http://localhost:3000/users/api/' + id,
         data: JSON.stringify(user),
         contentType: "application/json; charset=utf-8"
       }).done(function(response) {

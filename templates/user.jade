@@ -5,19 +5,20 @@ block main
         .col-lg-12
           .row
             h3 My Account
-            .user(data-user="#{user.id}")
+            .user(data-user="#{user._id}")
               p Name: #{user.firstName} #{user.lastName}
               p Username: #{user.username}
               p Email Address: #{user.emailAddress}
               p Phone Number: #{user.phoneNumber}
               p Address:
-              for address in user.address
-                h3 #{address.addressType}:
-                p Street: #{address.street} #{address.secondStreet},
-                p City State Zipcode: #{address.city}, #{address.state}, #{address.zipCode}
-                p Country: #{address.country}
+              if (address)
+                for address in user.address
+                  h3 #{address.addressType}:
+                  p Street: #{address.street} #{address.secondStreet},
+                  p City State Zipcode: #{address.city}, #{address.state}, #{address.zipCode}
+                  p Country: #{address.country}
               .btn-group
                   button.btn.btn-default(id="edit-user-details") Edit Account Details
-  include update-user-form.jade
+    include update-user-form.jade
 
   //- need to add fields for: password, creditCardToken, currentCart

@@ -14,7 +14,7 @@
           a(href='#') Search
         if (user)
           li
-            a(href="/users/:id") Hi #{user.username} (My Account)
+            a(href="/users/#{user._id}") Hi #{user.username} (My Account)
           li
             a(href="/auth/logout") Logout
         else
