@@ -73,6 +73,8 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/auth', auth);
 app.use('/items', itemsRouter);
 app.use('/users', usersRouter);
+app.use('/cart', cartRouter);
+app.use('/checkout', checkoutRouter);
 app.use('/', itemsRouter);
 app.use('/checkout', checkoutRouter);
 
