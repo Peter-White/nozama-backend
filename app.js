@@ -16,7 +16,7 @@ var auth = require('./routes/auth');
 var LocalStrategy = require('passport-local').Strategy;
 var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
-<<<<<<< HEAD
+
 var MongoSessionDB = require('connect-mongodb-session')(session);
 
 var mongoStore = new MongoSessionDB({
@@ -24,9 +24,8 @@ var mongoStore = new MongoSessionDB({
   collection: 'webSessions'
 });
 
-=======
+
 var checkoutRouter = require('./routes/checkout');
->>>>>>> Problem
 
 //Setup
 var app = express();
@@ -87,7 +86,6 @@ app.use(stylus.middleware({
   src: __dirname + '/public',
   compile: compile
 }));
->>>>>>> Retrying Checkout Page
 
 
 var server = app.listen(3000, function() {
