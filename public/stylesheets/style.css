@@ -33,8 +33,13 @@ body {
   }
 }
 .items {
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
+
 .buttons {
   margin: 10px;
+
+.inputs {
+  position: relative;
+  margin-top: 50px;
 }
