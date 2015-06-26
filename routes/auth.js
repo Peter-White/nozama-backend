@@ -17,13 +17,13 @@ router.route('/register')
         phoneNumber: req.body.phoneNumber,
         emailAddress: req.body.emailAddress
       }, req.body.password,
+
       function(err, user) {
         if (err) {
           return res.render('register', {
             user: user
           });
         }
-
         req.login(user, function(err) {
           res.redirect('/');
         });

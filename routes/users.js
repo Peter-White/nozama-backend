@@ -74,10 +74,9 @@ router.delete('/api/:id', function(req, res) {
 // });
 
 router.get('/:id', function(req, res) {
-  User.findById(req.params.id, function(error, user) {
-    res.render('user', {
-      user: req.user
-    });
+  console.log(req.user);
+  res.render('user', {
+    user: req.user
   });
 });
 

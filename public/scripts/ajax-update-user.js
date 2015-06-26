@@ -7,16 +7,16 @@
 
     $('form[name="update-user"]').on('submit', function(event) {
       event.preventDefault();
-      var id = $('.user').data('user')
+      var id = $('.user').data('user');
       var user = {
         firstName: $('input[name="firstName"]').val(),
         lastName: $('input[name="lastName"]').val(),
-        phoneNumber: $('input[name="phoneNumber"]').val,
+        userName: $('input[name="userame"]').val(),
+        phoneNumber: $('input[name="phoneNumber"]').val(),
         emailAddress: $('input[name="emailAddress"]').val(),
-        ddress: $('input[name="address"]').val(),
+        address: $('input[name="address"]').val(),
         password: $('input[name="password"]').val()
       };
-      debugger
       $.ajax({
         method: 'PATCH',
         url: 'http://localhost:3000/users/api/' + id,
