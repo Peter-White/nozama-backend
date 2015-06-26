@@ -1,23 +1,50 @@
-.form
-  form(name="update-user")
-      p First Name:
-      input(type="text", name="firstName", value=user.firstName)
-      p Last Name:
-      input(type="text", name="lastName", value=user.lastName)
-      p Phone Number:
-      input(type="text", name="phoneNumber", value=user.phoneNumber)
-      p Email Address:
-      input(type="text", name="emailAddress", value=user.emailAddress)
-      p Address:
-      input(type="text", name="addressType", value=user.addressType)
-      input(type="text", name="addressStreet", value=user.street)
-      input(type="text", name="addressSecondStreet", value=user.secondStreet)
-      input(type="text", name="addressCity", value=user.city)
-      input(type="text", name="addressState", value=user.state)
-      input(type="text", name="addressCity", value=user.city)
-      input(type="text", name="addressZipCode", value=user.zipCode)
-      input(type="text", name="addressCountry", value=user.country)
-      p Password:
-      input(type="text", name="password")
-      input(type="submit", value="update my account")
+.container.maincontent
+        .row
+            .col-lg-12
+                  form(name="update-user")
+                        .form-group
+                              label(for="firstName") First Name
+                              input.form-control(name="firstName", type="text", value=user.firstName)
+                        .form-group
+                              label(for="lastName") Last Name
+                              input.form-control(name="lastName", type="text", value=user.lastName)
+                        .form-group
+                              label(for="phoneNumber") Phone Number
+                              input.form-control(name="phoneNumber", type="text", value=user.phoneNumber)
+                        .form-group
+                              label(for="emailAddress") Email Address
+                              input.form-control(name="emailAddress", type="text", value=user.emailAddress)
+                        .form-group
+                              label(for="addressType") Address Type
+                              input.form-control(name="addressType", type="text", value=user.addressType)
+                        .form-group
+                              label(for="addressStreet") Address Street
+                              input.form-control(name="addressStreet", type="text", value=user.addressStreet)
+                        .form-group
+                              label(for="addressSecondStreet") Second Line Street Address
+                              input.form-control(name="addressSecondStreet", type="text", value=user.addressSecondStreet)
+                        .form-group
+                              label(for="addressCity") City
+                              input.form-control(name="addressCity", type="text", value=user.addressCity)
+                        .form-group
+                              label(for="addressState") State
+                              input.form-control(name="addressState", type="text", value=user.addressState)
+                        .form-group
+                              label(for="addressZipCode") ZIP Code
+                              input.form-control(name="addressZipCode", type="text", value=user.addressZipCode)
+                        .form-group
+                              label(for="addressCountry") Country
+                              input.form-control(name="addressCountry", type="text", value=user.addressCountry)
+                        .form-group
+                              label(for="password") Password
+                              input.form-control(name="password", type="text")
+                        p
+                        a.btn.btn-link(href="/") Cancel
+                        button.btn.btn-default(type="submit", name="update", value="Update") Update
+
+
+
+
+
+
 
