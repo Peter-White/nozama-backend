@@ -81,7 +81,6 @@ app.use('/checkout', checkoutRouter);
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
-    .use(nib());
 };
 
 app.use(stylus.middleware({
