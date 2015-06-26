@@ -64,18 +64,18 @@ router.delete('/api/:id', function(req, res) {
 });
 
 // Jade (rendered) routes for users
-router.get('/', function(req, res) {
-  User.find({}, function(error, userList) {
-    res.render('users', {
-      users: userList
-    });
-  });
-});
+// router.get('/', function(req, res) {
+//   User.find({}, function(error, userList) {
+//     res.render('users', {
+//       users: userList
+//     });
+//   });
+// });
 
 router.get('/:id', function(req, res) {
   User.findById(req.params.id, function(error, user) {
     res.render('user', {
-      user: user
+      user: req.user
     });
   });
 });
