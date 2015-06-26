@@ -16,6 +16,7 @@ var auth = require('./routes/auth');
 var LocalStrategy = require('passport-local').Strategy;
 var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
+<<<<<<< HEAD
 var MongoSessionDB = require('connect-mongodb-session')(session);
 
 var mongoStore = new MongoSessionDB({
@@ -23,6 +24,9 @@ var mongoStore = new MongoSessionDB({
   collection: 'webSessions'
 });
 
+=======
+var checkoutRouter = require('./routes/checkout');
+>>>>>>> Problem
 
 //Setup
 var app = express();
@@ -67,10 +71,11 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //all routes
-app.use('/auth/', auth);
+app.use('/auth', auth);
 app.use('/items', itemsRouter);
 app.use('/users', usersRouter);
 app.use('/', itemsRouter);
+app.use('/checkout', checkoutRouter);
 
 function compile(str, path) {
   return stylus(str)
