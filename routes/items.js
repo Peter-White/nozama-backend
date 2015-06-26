@@ -70,10 +70,13 @@ router.delete('/api/:id', function(req, res) {
   });
 });
 
+//jade rendered routes
 router.get('/', function(req, res) {
   Item.find({}, function(error, itemList) {
+    console.log(req.user);
     res.render('items', {
-      items: itemList
+      items: itemList,
+      user: req.user
     });
   });
 });

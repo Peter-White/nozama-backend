@@ -11,14 +11,14 @@
     .navbar-collapse.collapse
       ul.nav.navbar-nav.navbar-right
         li
-          a(href='#') Login
-        li
           a(href='#') Search
-      //- if (user)
-      //-   li You are logged in as #{user.username}
-      //-     a(href="/auth/logout")  logout
-      //- else
-      //-   li
-      //-     a(href="/auth/login") Please login
-      //-     |  or
-      //-     a(href="/auth/register")  register
+        if (user)
+          li
+            a Hi #{user.username} (My Account)
+          li
+            a(href="/auth/logout") Logout
+        else
+          li
+            a(href="/auth/login") Login
+          li
+            a(href="/auth/register") Register

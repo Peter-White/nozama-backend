@@ -3,6 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser'); //parser for json
 var User = require('./../lib/users.js'); //Model
 
+
 var jsonParser = bodyParser.json();
 
 var router = express.Router();
@@ -112,5 +113,7 @@ router.delete('/:id', function(req, res) {
     }
   });
 });
+
+
 
 module.exports = router;
