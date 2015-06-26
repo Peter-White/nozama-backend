@@ -13,16 +13,17 @@ var createUserOne = function(done) {
   User.create({
     firstName: 'John',
     lastName: 'Doe',
+    username: 'hey',
     phoneNumber: '617-123-1234',
     address: [{
-      addressType: 'mailing',
+      addressType: 'Mailing',
       street: '100 Somerville Ave',
       city: 'Somerville',
       state: 'MA',
       zipCode: '01200',
       country: 'United States of America'
     }, {
-      addressType: 'billing',
+      addressType: 'Billing',
       street: '20 Glenwood Park',
       city: 'Cambridge',
       state: 'MA',
@@ -36,9 +37,10 @@ var createUserTwo = function(done) {
   User.create({
     firstName: 'Jeanne',
     lastName: 'Dean',
+    username: 'dean',
     phoneNumber: '617-001-1234',
     address: [{
-      addressType: 'mailing',
+      addressType: 'Mailing',
       street: '100 Central street',
       city: 'Boston',
       state: 'MA',
@@ -53,16 +55,17 @@ var createUserThree = function(done) {
   User.create({
     firstName: 'Kylie',
     lastName: 'Quackenbush',
+    username: 'quack',
     phoneNumber: '845-555-6186',
     address: [{
-      addressType: 'billing',
+      addressType: 'Billing',
       street: '13 Rocklyn Drive',
       city: 'Suffern',
       state: 'NY',
       zipCode: '10901',
       country: 'USA'
     }, {
-      addressType: 'mailing',
+      addressType: 'Mailing',
       street: '13 Rocklyn Drive',
       city: 'Suffern',
       state: 'NY',
