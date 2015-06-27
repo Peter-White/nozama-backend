@@ -4,6 +4,9 @@ var router = express.Router();
 var Item = require('./../lib/items.js');
 
 router.route('/')
+router.get('/', function(req, res) {
+  res.render('add', {});
+})
   .post(function(req, res, next) {
     console.log(req.body);
     Item.register({
@@ -19,11 +22,12 @@ router.route('/')
             item: item
           });
         }
-
         req.login(user, function(err) {
           res.redirect('/');
         });
       })
   })
+
+
 
 module.exports = router;
