@@ -34,18 +34,6 @@ module.renderDetailedCart = function(){
       };
   };
 
-// var makeNum = function(price){
-//     return Number(price.substring(1, price.length));
-//   };
-// var calcItemTotal = function(item){
-//     return makeNum(item.price) * item.quantity
-//   };
-
-//  module.cartReset = function(){
-//     localStorage.removeItem('cart');
-//     localStorage.setItem('cart', "[]");
-//     renderNavCart();
-//   };
 var calcCart = function(data){
     var total = 0;
     var cart = { total: 0, quantity: 0};
@@ -57,14 +45,6 @@ var calcCart = function(data){
     return cart;
   };
 
-// var emptyCartNormalize = function(){
-//     if (localStorage['cart'] === undefined) {
-//       localStorage.setItem('cart', "[]");
-//     };
-//     if (localStorage['count'] === undefined) {
-//       localStorage.setItem('count', "0");
-//     };
-//   };
 
  var addItem = function(item){
     var orderItem = buildOrderItem(item);
@@ -93,12 +73,6 @@ module.init = function(){
       addItem($(this));
     });
 
-    // $('#content').on('click', '.remove-cart', function(event){
-    //   event.preventDefault();
-    //   removeItem($(this));
-    // });
-
-    // emptyCartNormalize();
     renderNavCart();
   };
 
