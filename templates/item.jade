@@ -11,7 +11,8 @@ block main
               p #{item.description}
               h4 price: $ #{item.price}
               .btn-group
-                button.btn.btn-default add to
-                  span(class='glyphicon glyphicon-shopping-cart')
-                a.btn.btn-default(href='/items/') back to catalog
+                form(method="post" action="/auth")
+                  button.btn.btn-default(type="submit" value= '#{item._id}') add to
+                    span(class='glyphicon glyphicon-shopping-cart' )
+                  a.btn.btn-default(href='/items/') back to catalog
 

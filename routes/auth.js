@@ -54,4 +54,26 @@ router.all('/logout', function(req, res, next) {
 });
 
 
+var isAuthenticated = function(req, res, next) {
+  if (req.isAuthenticated())
+    return next();
+  res.redirect('/');
+}
+
+router.get('/', isAuthenticated, function(req, res) {
+  res.json('successfully logged in');
+});
+
+router.get('/pay', function(req, res) {
+  res.render('stripe');
+})
+
+router.post('/cardSubmit', function(req, res) {
+
+  console.log(req.stripeToken);
+  // User.find({_id: req.user._id}, function(err, user){
+  //   user.cardToken = re
+  // })
+})
+
 module.exports = router;
