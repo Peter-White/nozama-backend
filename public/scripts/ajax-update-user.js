@@ -8,14 +8,21 @@
     $('form[name="update-user"]').on('submit', function(event) {
       event.preventDefault();
       var id = $('.user').data('user');
+
       var user = {
         firstName: $('input[name="firstName"]').val(),
         lastName: $('input[name="lastName"]').val(),
-        userName: $('input[name="userame"]').val(),
+        username: $('input[name="userame"]').val(),
         phoneNumber: $('input[name="phoneNumber"]').val(),
         emailAddress: $('input[name="emailAddress"]').val(),
-        address: $('input[name="address"]').val(),
-        password: $('input[name="password"]').val()
+        password: $('input[name="password"]').val(),
+        address: [{
+          street: $('input[name="street"]').val(),
+          secondStreet: $('input[name="secondStreet"]').val(),
+          city: $('input[name="city"]').val(),
+          state: $('input[name="state"]').val(),
+          zipCode: $('input[name="zipCode"]').val()
+        }]
       };
       $.ajax({
         method: 'PATCH',

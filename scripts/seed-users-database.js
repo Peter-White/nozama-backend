@@ -15,20 +15,13 @@ var createUserOne = function(done) {
     lastName: 'Doe',
     username: 'hey',
     phoneNumber: '617-123-1234',
-    address: [{
-      addressType: 'Mailing',
+    address: {
       street: '100 Somerville Ave',
       city: 'Somerville',
       state: 'MA',
       zipCode: '01200',
       country: 'United States of America'
-    }, {
-      addressType: 'Billing',
-      street: '20 Glenwood Park',
-      city: 'Cambridge',
-      state: 'MA',
-      zipCode: '02124'
-    }],
+    },
     emailAddress: 'john@example.com'
   }, done);
 };
@@ -39,14 +32,13 @@ var createUserTwo = function(done) {
     lastName: 'Dean',
     username: 'dean',
     phoneNumber: '617-001-1234',
-    address: [{
-      addressType: 'Mailing',
+    address: {
       street: '100 Central street',
       city: 'Boston',
       state: 'MA',
       zipCode: '01201',
       country: 'United States of America'
-    }],
+    },
     emailAddress: 'jeanne@example.com'
   }, done);
 };
@@ -57,21 +49,13 @@ var createUserThree = function(done) {
     lastName: 'Quackenbush',
     username: 'quack',
     phoneNumber: '845-555-6186',
-    address: [{
-      addressType: 'Billing',
+    address: {
       street: '13 Rocklyn Drive',
       city: 'Suffern',
       state: 'NY',
       zipCode: '10901',
       country: 'USA'
-    }, {
-      addressType: 'Mailing',
-      street: '13 Rocklyn Drive',
-      city: 'Suffern',
-      state: 'NY',
-      zipCode: '10901',
-      country: 'USA'
-    }],
+    },
     emailAddress: 'kyliequackenbush@gmail.com',
   }, done);
 };

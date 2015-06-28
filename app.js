@@ -16,6 +16,13 @@ var auth = require('./routes/auth');
 var LocalStrategy = require('passport-local').Strategy;
 var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
+var MongoSessionDB = require('connect-mongodb-session')(session);
+
+var mongoStore = new MongoSessionDB({
+  uri: 'mongodb://localhost/nozama',
+  collection: 'webSessions'
+});
+
 
 //Setup
 var app = express();
@@ -39,6 +46,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(session({
+  store: mongoStore,
   secret: 'nozama',
   resave: true,
   saveUninitialized: false
@@ -66,6 +74,7 @@ app.use('/', itemsRouter);
 
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 
