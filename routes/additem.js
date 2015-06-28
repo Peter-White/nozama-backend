@@ -1,7 +1,6 @@
 var passport = require('passport');
 var express = require('express');
 var router = express.Router();
-
 var Item = require('../lib/items');
 
 router.route('/')
@@ -10,7 +9,7 @@ router.route('/')
   })
   .post(function(req, res, next) {
     console.log(req.body);
-    Item.additem({
+    Item.create({
         itemName: req.body.itemName,
         description: req.body.description,
         price: req.body.price,

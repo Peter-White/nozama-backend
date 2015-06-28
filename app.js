@@ -26,8 +26,6 @@ var mongoStore = new MongoSessionDB({
 
 
 var checkoutRouter = require('./routes/checkout');
-var addRouter = require('./routes/add');
-var cartRouter = require('./routes/cart');
 var addRouter = require('./routes/additem');
 
 //Setup
@@ -79,7 +77,6 @@ app.use('/additem', addRouter);
 app.use('/users', usersRouter);
 app.use('/checkout', checkoutRouter);
 app.use('/', itemsRouter);
-app.use('/checkout', checkoutRouter);
 
 function compile(str, path) {
   return stylus(str)
