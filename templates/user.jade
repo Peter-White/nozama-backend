@@ -1,6 +1,6 @@
 extend layout
 block main
-    .container.maincontent
+  .container.maincontent
       .row
         .col-lg-12
           .row
@@ -19,6 +19,6 @@ block main
                   p Country: #{address.country}
               .btn-group
                   button.btn.btn-default(id="edit-user-details") Edit Account Details
-    include update-user-form.jade
+      include update-user-form.jade
 
   //- need to add fields for: password, creditCardToken, currentCart

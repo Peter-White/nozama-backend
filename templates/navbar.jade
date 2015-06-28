@@ -17,6 +17,10 @@
             a(href="/users/#{user._id}") Hi #{user.username} (My Account)
           li
             a(href="/auth/logout") Logout
+          li
+            a(href='#')
+              span(class='glyphicon glyphicon-shopping-cart')
+              span.cart-status
         else
           li
             a(href="/auth/login") Login
