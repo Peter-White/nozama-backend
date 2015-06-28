@@ -2,15 +2,15 @@ var passport = require('passport');
 var express = require('express');
 var router = express.Router();
 
-var Item = require('../lib/items.js');
+var Item = require('../lib/items');
 
 router.route('/')
   .get(function(req, res, next) {
-    res.render('add', {});
+    res.render('additem', {});
   })
   .post(function(req, res, next) {
     console.log(req.body);
-    Item.add({
+    Item.additem({
         itemName: req.body.itemName,
         description: req.body.description,
         price: req.body.price,
@@ -20,12 +20,12 @@ router.route('/')
 
       function(err, item) {
         if (err) {
-          return res.render('add', {
+          return res.render('additem', {
             item: item
           });
         }
         req.login(item, function(err) {
-          res.redirect('/');
+          res.redirect('/items');
         });
       })
   })

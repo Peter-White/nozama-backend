@@ -1,16 +1,17 @@
 extends layout
+
 block main
     .container.itemDetails
         .row
             .col-lg-12
                 h1 Add an Item
-                form(role="form", action="/add", method="post")
+                form(role="form", action="/additem", method="post")
                     .form-group
                         label(for="itemName") Item Name
                         input#itemName.form-control(name="itemName", type="text")
                     .form-group
                         label(for="description") Description
-                        textarea#description.form-control(name="description", type="text")
+                        input#description.form-control(name="description", type="text")
                     .form-group
                         label(for="price") Price
                         input#price.form-control(name="price", type="text")

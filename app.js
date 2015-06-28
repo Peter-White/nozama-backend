@@ -28,6 +28,7 @@ var mongoStore = new MongoSessionDB({
 var checkoutRouter = require('./routes/checkout');
 var addRouter = require('./routes/add');
 var cartRouter = require('./routes/cart');
+var addRouter = require('./routes/additem');
 
 //Setup
 var app = express();
@@ -74,7 +75,7 @@ passport.deserializeUser(User.deserializeUser());
 //all routes
 app.use('/auth', auth);
 app.use('/items', itemsRouter);
-app.use('/add', addRouter);
+app.use('/additem', addRouter);
 app.use('/users', usersRouter);
 app.use('/checkout', checkoutRouter);
 app.use('/', itemsRouter);
