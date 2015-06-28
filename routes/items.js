@@ -86,7 +86,8 @@ router.get('/:id', function(req, res) {
     _id: req.params.id
   }, function(error, item) {
     res.render('item', {
-      items: item
+      items: item,
+      user: req.user
     });
   });
 });

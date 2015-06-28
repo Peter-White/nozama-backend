@@ -74,10 +74,18 @@ router.get('/', function(req, res) {
 });
 
 router.get('/:id', function(req, res) {
-    console.log(req.user);
+    // console.log(req.user);
     res.render('user', { user: req.user });
 });
 
+
+var logUserAndSession = function(req, res, next) {
+  console.log('req.user: %j', req.user);
+  console.log('req.session: %j', req.session);
+  next();
+};
+
+router.post('/login', logUserAndSession);
 router.post('/', jsonParser);
 router.post('/', function(req, res) {
   User.create(req.body, function(error, user) {

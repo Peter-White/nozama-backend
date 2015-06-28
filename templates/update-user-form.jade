@@ -15,26 +15,22 @@
                               label(for="emailAddress") Email Address
                               input.form-control(name="emailAddress", type="text", value=user.emailAddress)
                         .form-group
-                              label(for="addressType") Address Type
-                              input.form-control(name="addressType", type="text", value=user.addressType)
+                              label(for="addressType") Address:
                         .form-group
-                              label(for="addressStreet") Address Street
-                              input.form-control(name="addressStreet", type="text", value=user.addressStreet)
+                              label(for="addressStreet") Street
+                              input.form-control(name="street", type="text", value=user.address.street)
                         .form-group
-                              label(for="addressSecondStreet") Second Line Street Address
-                              input.form-control(name="addressSecondStreet", type="text", value=user.addressSecondStreet)
+                              label(for="addressSecondStreet") Second Line (optional)
+                              input.form-control(name="secondStreet", type="text")
                         .form-group
                               label(for="addressCity") City
-                              input.form-control(name="addressCity", type="text", value=user.addressCity)
+                              input.form-control(name="city", type="text")
                         .form-group
                               label(for="addressState") State
-                              input.form-control(name="addressState", type="text", value=user.addressState)
+                              input.form-control(name="state", type="text")
                         .form-group
                               label(for="addressZipCode") ZIP Code
-                              input.form-control(name="addressZipCode", type="text", value=user.addressZipCode)
-                        .form-group
-                              label(for="addressCountry") Country
-                              input.form-control(name="addressCountry", type="text", value=user.addressCountry)
+                              input.form-control(name="zipCode", type="text")
                         .form-group
                               label(for="password") Password
                               input.form-control(name="password", type="text")
