@@ -15,11 +15,10 @@
                               label(for="emailAddress") Email Address
                               input.form-control(name="emailAddress", type="text", value=user.emailAddress)
                         .form-group
-                              label(for="addressType") Address Type
-                              input.form-control(name="addressType", type="text", value=user.addressType)
+                              label(for="address") Address
                         .form-group
                               label(for="addressStreet") Address Street
-                              input.form-control(name="addressStreet", type="text", value=user.addressStreet)
+                              input.form-control(name="addressStreet", type="text")
                         .form-group
                               label(for="addressSecondStreet") Second Line Street Address
                               input.form-control(name="addressSecondStreet", type="text", value=user.addressSecondStreet)
@@ -33,14 +32,11 @@
                               label(for="addressZipCode") ZIP Code
                               input.form-control(name="addressZipCode", type="text", value=user.addressZipCode)
                         .form-group
-                              label(for="addressCountry") Country
-                              input.form-control(name="addressCountry", type="text", value=user.addressCountry)
-                        .form-group
                               label(for="password") Password
                               input.form-control(name="password", type="text")
                         p
-                        a.btn.btn-link(href="/") Cancel
-                        button.btn.btn-default(type="submit", name="update", value="Update") Update
+                              a.btn.btn-link(href="/") Cancel
+                              button.btn.btn-default(type="submit", name="update", value="Update") Update
 
 
 

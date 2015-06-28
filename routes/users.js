@@ -51,6 +51,7 @@ router.patch('/api/:id', function(req, res) {
   });
 });
 
+
 router.delete('/api/:id', function(req, res) {
   User.remove({
     _id: req.params.id
