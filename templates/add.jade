@@ -4,13 +4,13 @@ block main
         .row
             .col-lg-12
                 h1 Add an Item
-                form(role="form", action="/auth/register", method="post")
+                form(role="form", action="/add", method="post")
                     .form-group
                         label(for="itemName") Item Name
                         input#itemName.form-control(name="itemName", type="text")
                     .form-group
                         label(for="description") Description
-                        textarea#description.form-control(name="description", type="password")
+                        textarea#description.form-control(name="description", type="text")
                     .form-group
                         label(for="price") Price
                         input#price.form-control(name="price", type="text")
@@ -22,5 +22,5 @@ block main
                         input#tags.form-control(name="tags", type="text")
                     p
                         a.btn.btn-link(href="/") Cancel
-                        button.btn.btn-default(type="submit", value="Register") Add
+                        button.btn.btn-default(type="submit", name="AddItem", value="AddItem") Add Item To Catalog
 

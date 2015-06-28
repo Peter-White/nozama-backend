@@ -1,6 +1,6 @@
 extend layout
 block main
-  .container-inputs
+  .container.inputs
     .row
       p "Shipping Address"
       input(id='shipping',value='',placeholder='',name='shipping')
@@ -10,4 +10,6 @@ block main
       input(id='csv',value='',placeholder='',name='csv')
       p "Expiration Date"
       input(type="month" name="month")
-  button Done
+    p
+      a.btn.btn-link(href="/") Cancel
+      button Purchase
