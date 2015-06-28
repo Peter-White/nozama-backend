@@ -22,14 +22,6 @@ router.get('/api/:id', function(req, res) {
   });
 });
 
-router.get('/api/:id', function(req, res) {
-  Item.find({
-    _id: req.params.id
-  }, function(error, item) {
-    res.json(item);
-  });
-});
-
 router.post('/api', jsonParser);
 router.post('/api', function(req, res) {
   Item.create(req.body, function(error, item) {
@@ -86,7 +78,8 @@ router.get('/:id', function(req, res) {
     _id: req.params.id
   }, function(error, item) {
     res.render('item', {
-      items: item
+      items: item,
+      user: req.user
     });
   });
 });

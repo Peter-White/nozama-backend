@@ -9,6 +9,7 @@ var jade = require('jade');
 var fs = require('fs');
 var stylus = require('stylus');
 var Item = require('./lib/items.js');
+var Cart = require('./lib/cart.js');
 var util = require('util');
 var session = require('express-session');
 var passport = require('passport');
@@ -16,6 +17,7 @@ var auth = require('./routes/auth');
 var LocalStrategy = require('passport-local').Strategy;
 var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
+var cartsRouter = require('./routes/carts');
 
 //Setup
 var app = express();
@@ -62,6 +64,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use('/auth/', auth);
 app.use('/items', itemsRouter);
 app.use('/users', usersRouter);
+app.use('/carts', cartsRouter);
 app.use('/', itemsRouter);
 
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
