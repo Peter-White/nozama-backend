@@ -1,7 +1,7 @@
 //requires
 var express = require('express');
 var bodyParser = require('body-parser'); //parser for json
-var Item = require('./../lib/items.js'); //Model
+var Item = require('../lib/items.js'); //Model
 
 var jsonParser = bodyParser.json();
 

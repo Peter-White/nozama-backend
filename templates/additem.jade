@@ -1,0 +1,27 @@
+extends layout
+
+block main
+    .container.itemDetails
+        .row
+            .col-lg-12
+                h1 Add an Item
+                form(role="form", action="/additem", method="post")
+                    .form-group
+                        label(for="itemName") Item Name
+                        input#itemName.form-control(name="itemName", type="text")
+                    .form-group
+                        label(for="description") Description
+                        input#description.form-control(name="description", type="text")
+                    .form-group
+                        label(for="price") Price
+                        input#price.form-control(name="price", type="text")
+                    .form-group
+                        label(for="photoURL") Photo URL
+                        input#photoURL.form-control(name="photoURL", type="text")
+                    .form-group
+                        label(for="tags") Tags
+                        input#tags.form-control(name="tags", type="text")
+                    p
+                        a.btn.btn-link(href="/") Cancel
+                        button.btn.btn-default(type="submit", name="AddItem", value="AddItem") Add Item To Catalog
+

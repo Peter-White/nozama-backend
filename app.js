@@ -16,6 +16,7 @@ var auth = require('./routes/auth');
 var LocalStrategy = require('passport-local').Strategy;
 var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
+
 var MongoSessionDB = require('connect-mongodb-session')(session);
 
 var mongoStore = new MongoSessionDB({
@@ -23,6 +24,9 @@ var mongoStore = new MongoSessionDB({
   collection: 'webSessions'
 });
 
+
+var checkoutRouter = require('./routes/checkout');
+var addRouter = require('./routes/additem');
 
 //Setup
 var app = express();
@@ -67,16 +71,24 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //all routes
-app.use('/auth/', auth);
+app.use('/auth', auth);
 app.use('/items', itemsRouter);
+app.use('/additem', addRouter);
 app.use('/users', usersRouter);
+app.use('/checkout', checkoutRouter);
 app.use('/', itemsRouter);
 
-app.use(require('stylus').middleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+};
 
+app.use(stylus.middleware({
+  src: __dirname + '/public',
+  compile: compile
+}));
 
-
+app.use(express.static(__dirname + '/public'));
 
 var server = app.listen(3000, function() {
 
