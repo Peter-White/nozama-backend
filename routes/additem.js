@@ -21,6 +21,7 @@ router.route('/')
       function(err, item) {
 
         if (err) {
+          res.redirect('/additem/itemerror');
           console.log("Error adding item");
           return res.render('additem', {
             item: item
@@ -33,5 +34,9 @@ router.route('/')
         }
       })
   })
+
+router.get('/itemerror', function(req, res) {
+  res.render('itemerror', {});
+});
 
 module.exports = router;
