@@ -29,7 +29,7 @@ router.route('/')
         } else {
           console.log("Adding item: " + util.inspect(item));
           req.login(item, function(err) {
-            res.redirect('/items');
+            res.redirect('/itemsuccess');
           });
         }
       })
@@ -37,6 +37,9 @@ router.route('/')
 
 router.get('/itemerror', function(req, res) {
   res.render('itemerror', {});
+});
+router.get('/itemsuccess', function(req, res) {
+  res.render('itemsuccess', {});
 });
 
 module.exports = router;
