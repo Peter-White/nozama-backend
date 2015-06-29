@@ -46,3 +46,14 @@ body {
   position: relative;
   top: 50px;
 }
+.tagbox {
+  position: relative;
+  height: 100px;
+  margin-top: 200px;
+  bottom: 200px;
+}
+.itembuttons {
+  position: relative;
+  bottom: 70px;
+  right: 30px;
+}
