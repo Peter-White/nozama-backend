@@ -66,15 +66,15 @@ var removeItem = function(item){
   };
 
 
-module.init = function(){
+// module.init = function(){
 
-    $('.add-to-cart').on('submit', function(event){
-      event.preventDefault();
-      addItem($(this));
-    });
+//     $('.add-to-cart').on('submit', function(event){
+//       event.preventDefault();
+//       addItem($(this));
+//     });
 
-    renderNavCart();
-  };
+//     renderNavCart();
+//   };
 
 
 return module;

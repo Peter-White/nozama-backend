@@ -19,12 +19,44 @@ var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
 var cartsRouter = require('./routes/carts');
 
+
+
+//// MONGO TEMPLATE
+
+var session = require('express-session');
 var MongoSessionDB = require('connect-mongodb-session')(session);
 
 var mongoStore = new MongoSessionDB({
-  uri: 'mongodb://localhost/nozama',
+  uri: 'MONGO_URL',
   collection: 'webSessions'
 });
+
+app.use(session({
+  store: mongoStore,
+  secret: 'SESSION_KEY',
+  resave: false,
+  saveUninitialized: true
+}));
+
+//// MONGOOSE TEMPLATE
+
+var session = require('express-session');
+var MongooseSessionStore = require('connect-mongoose-session-store')(session);
+
+var mongooseStore = new MongooseSessionStore({
+  db: 'mongodb://localhost/nozama'
+});
+
+app.use(session({
+  store: mongooseStore,
+  secret: 'SESSION_KEY',
+  resave: false,
+  saveUninitialized: true
+}));
+
+
+
+
 
 
 var checkoutRouter = require('./routes/checkout');
@@ -54,7 +86,7 @@ app.use(cookieParser());
 app.use(session({
   store: mongoStore,
   secret: 'nozama',
-  resave: true,
+  resave: false,
   saveUninitialized: false
 }));
 app.use(stylus.middleware({
