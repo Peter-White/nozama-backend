@@ -21,13 +21,14 @@ var ensureCartInSession = function(req, res, next) {
   if (req.session.cart) {
     return next();
   } else {
-    Cart.find({
+    Cart.findOne({
       user: req.user._id
     }, function(err, cart) {
-      if (cart) {
+      if (cart.length > 0) {
         req.session.cart = cart; // stick around for the session
         return next();
       } else {
+        console.log('gimme cart');
         Cart.create({
           user: req.user._id
         }, function(err, cart) {
@@ -44,7 +45,14 @@ router.post('/contents', ensureCartInSession);
 router.post('/contents', function(req, res) {
   console.log(req.session.cart);
   req.session.cart.products.push(req.body.product);
-  res.sendStatus(200);
+  req.session.cart.save(function(err, cart) {
+    if(err) {
+      return res.sendStatus(400);
+    } else {
+      res.send(cart);
+      res.status(200);
+    };
+  });
 });
 
 
