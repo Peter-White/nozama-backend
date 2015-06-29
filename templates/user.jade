@@ -4,19 +4,35 @@ block main
       .row
         .col-lg-12
           .row
-            h3 My Account
-            .user(data-user="#{user._id}")
-              p Name: #{user.firstName} #{user.lastName}
-              p Username: #{user.username}
-              p Email Address: #{user.emailAddress}
-              p Phone Number: #{user.phoneNumber}
-              p Address:
-              if (address)
-                for address in user.address
-                  p Street: #{address.street} #{secondStreet},
-                  p City / State / Zipcode: #{city}, #{state}, #{zipCode}
-              .btn-group
-                  button.btn.btn-default(id="edit-user-details") Edit Account Details
-      include update-user-form.jade
+            ul.nav.nav-tabs(role="tablist")#tabsy
+             li.active(role='presentation')
+                a(href='#tab-1' data-toggle='tab' role='tab' aria-control='tab-1') My &nbsp;
+                  span(class='glyphicon glyphicon-shopping-cart')
+              li(role='presentation')
+                a(href='#tab-2' data-toggle='tab' role='tab' aria-control='tab-2') My Account Details
+              li(role='presentation')
+                a(href='#tab-3' data-toggle='tab' role='tab' aria-control='tab-3') My Order History
+            #myTabContent.tab-content
+              #tab-1.tab-pane.active(role='tabpanel')
+                  .user(data-user="#{user._id}")
+                      .btn-group
+                          a.btn.btn-default.buttons(href='/#') Checkout
+                          a.btn.btn-default.buttons(href='/items/') Keep Shopping
+              #tab-2.tab-pane(role='tabpanel' aria-labeledby='#{user._id}')
+                .user(data-user="#{user._id}")
+                  p Name: #{user.firstName} #{user.lastName}
+                  p Username: #{user.username}
+                  p Email Address: #{user.emailAddress}
+                  p Phone Number: #{user.phoneNumber}
+                  p Address:
+                  if (address)
+                    for address in user.address
+                      p Street: #{address.street} #{secondStreet},
+                      p City / State / Zipcode: #{city}, #{state}, #{zipCode}
+                .btn-group
+                  .btn-group
+                    button.btn.btn-default(id="edit-user-details") Edit Account Details
+              include update-user-form.jade
+              #tab-3.tab-pane(role='tabpanel')
+                  .user(data-user="#{user._id}")
 
-  //- need to add fields for: password, creditCardToken, currentCart

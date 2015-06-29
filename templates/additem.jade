@@ -11,7 +11,7 @@ block main
                         input#itemName.form-control(name="itemName", type="text")
                     .form-group
                         label(for="description") Description
-                        input#description.form-control(name="description", type="text")
+                        textarea#description.form-control(name="description", type="text")
                     .form-group
                         label(for="price") Price
                         input#price.form-control(name="price", type="text")
@@ -20,8 +20,29 @@ block main
                         input#photoURL.form-control(name="photoURL", type="text")
                     .form-group
                         label(for="tags") Tags
-                        input#tags.form-control(name="tags", type="text")
                     p
-                        a.btn.btn-link(href="/") Cancel
-                        button.btn.btn-default(type="submit", name="AddItem", value="AddItem") Add Item To Catalog
+                        .container.tagbox
+                            <input type="checkbox" name="tags" value="beauty"> beauty
+                            <br>
+                            <input type="checkbox" name="tags" value="body"> body
+                            <br>
+                            <input type="checkbox" name="tags" value="cactus"> cactus
+                            <br>
+                            <input type="checkbox" name="tags" value="face"> face
+                            <br>
+                            <input type="checkbox" name="tags" value="flowering"> flowering
+                            <br>
+                            <input type="checkbox" name="tags" value="foods"> foods
+                            <br>
+                            <input type="checkbox" name="tags" value="health"> health
+                            <br>
+                            <input type="checkbox" name="tags" value="oils"> oils
+                            <br>
+                            <input type="checkbox" name="tags" value="organic"> organic
+                            <br>
+                            <input type="checkbox" name="tags" value="plants"> plants
+                            <br>
+                        .container.itembuttons
+                            a.btn.btn-link(href="/") Cancel
+                            button.btn.btn-default(type="submit", name="AddItem", value="AddItem") Add Item To Catalog
 
