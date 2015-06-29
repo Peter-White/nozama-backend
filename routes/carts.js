@@ -31,7 +31,8 @@ var ensureCartInSession = function(req, res, next) {
         req.session.cart = cart; // stick around for the session
         next();
       } else {
-        // console.log('gimme cart');
+        console.log('gimme cart');
+
         Cart.create({
           user: req.user._id
         }, function(err, cart) {
@@ -45,6 +46,7 @@ var ensureCartInSession = function(req, res, next) {
 
 router.post('/contents', ensureCartInSession);
 router.post('/contents', function(req, res) {
+
   req.session.cart.push(req.body.product);
   // Session.update(req.session, { $set : { cart: req.session.cart} }, function(err, cart) {
   //   if(err) {
@@ -56,11 +58,23 @@ router.post('/contents', function(req, res) {
   //   };
   // });
   res.send(200);
+
+  console.log(req.session.cart);
+  req.session.cart.products.push(req.body.product);
+  req.session.cart.save(function(err, cart) {
+    if(err) {
+      return res.sendStatus(400);
+    } else {
+      res.send(cart);
+      res.status(200);
+    };
+  });
+
 });
 
 
 
-router.post('/api', jsonParser);
+
 router.post('/api', function(req, res) {
   User.create(req.body, function(error, user) {
     if (error) {
