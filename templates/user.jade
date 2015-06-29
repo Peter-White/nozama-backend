@@ -11,7 +11,7 @@ block main
               p Email Address: #{user.emailAddress}
               p Phone Number: #{user.phoneNumber}
               p Address:
-              if (address)
+              if (user.address)
                 for address in user.address
                   p Street: #{address.street} #{secondStreet},
                   p City / State / Zipcode: #{city}, #{state}, #{zipCode}

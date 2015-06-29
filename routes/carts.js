@@ -9,9 +9,11 @@ var router = express.Router();
 
 //API (data) Routes for Users
 router.get('/contents', function(req, res) {
-  Cart.find({}, function(error, cartList) {
-    console.log(cartList);
-    res.json(cartList);
+  Cart.findOne({user: req.user._id})
+  .populate('products')
+  .exec (function(error, cart) {
+    console.log(cart);
+    res.json(cart);
   });
 });
 
@@ -19,40 +21,41 @@ router.get('/contents', function(req, res) {
 
 var ensureCartInSession = function(req, res, next) {
   if (req.session.cart) {
-    return next();
+    next();
+    console.log('hit');
   } else {
     Cart.findOne({
       user: req.user._id
     }, function(err, cart) {
       if (cart.length > 0) {
         req.session.cart = cart; // stick around for the session
-        return next();
+        next();
       } else {
-        console.log('gimme cart');
+        // console.log('gimme cart');
         Cart.create({
           user: req.user._id
         }, function(err, cart) {
           req.session.cart = cart;
-          return next();
+          next();
         });
       }
     });
   }
 };
 
-router.post('/contents', jsonParser);
 router.post('/contents', ensureCartInSession);
 router.post('/contents', function(req, res) {
-  console.log(req.session.cart);
-  req.session.cart.products.push(req.body.product);
-  req.session.cart.save(function(err, cart) {
-    if(err) {
-      return res.sendStatus(400);
-    } else {
-      res.send(cart);
-      res.status(200);
-    };
-  });
+  req.session.cart.push(req.body.product);
+  // Session.update(req.session, { $set : { cart: req.session.cart} }, function(err, cart) {
+  //   if(err) {
+  //     return res.sendStatus(400);
+  //   } else {
+  //     console.log(cart);
+  //     res.send(cart);
+  //     // res.status(200);
+  //   };
+  // });
+  res.send(200);
 });
 
 
