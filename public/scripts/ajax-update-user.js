@@ -30,7 +30,8 @@
         data: JSON.stringify(user),
         contentType: "application/json; charset=utf-8"
       }).done(function(response) {
-        location.reload();
+        $('.user').toggle();
+        $('form[name="update-user"]').toggle();
       })
     });
   });
