@@ -13,10 +13,13 @@
         li
           a(href='#') Search
         if (user)
-          li
+          li#current-user(data-user-id='#{user._id}')
             a(href="/users/#{user._id}") Hi #{user.username} (My Account)
           li
             a(href="/auth/logout") Logout
+          li
+            a(href='#')
+              span(class='glyphicon glyphicon-shopping-cart')
         else
           li
             a(href="/auth/login") Login

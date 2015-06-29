@@ -13,7 +13,7 @@ block main
                   p #{item.description}
                   h4 Price: $ #{item.price}
                   .btn-group
-                    button.btn.btn-default.buttons Add To &nbsp;
+                    button.btn.btn-default.buttons.add-to-cart(data-product-id='#{item._id}') Add To &nbsp;
                       span(class='glyphicon glyphicon-shopping-cart')
                     a.btn.btn-default.buttons(href='/items/') Keep Shopping
 
