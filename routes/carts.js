@@ -6,6 +6,7 @@ var Item = require('./../lib/items.js');
 var User = require('./../lib/users.js');
 var jsonParser = bodyParser.json();
 var router = express.Router();
+var util = require('util');
 
 //API (data) Routes for Users
 router.get('/contents', function(req, res) {
@@ -18,27 +19,36 @@ router.get('/contents', function(req, res) {
 
 
 var ensureCartInSession = function(req, res, next) {
-  if (req.session.cart) {
-    return next();
-  } else {
-    Cart.findOne({
-      user: req.user._id
-    }, function(err, cart) {
-      if (cart.length > 0) {
-        req.session.cart = cart; // stick around for the session
+    if (req.session.cart) {
+        console.log("ensureCartInSession: found cart:" + util.inspect(req.session.cart));
+
         return next();
-      } else {
-        console.log('gimme cart');
-        Cart.create({
-          user: req.user._id
+    } else {
+        Cart.findOne({
+            user: req.user._id
         }, function(err, cart) {
-          req.session.cart = cart;
-          return next();
+            console.log("ensureCartInSession: cart callback: cart found is " + util.inspect(cart));
+
+            if (err) {
+                console.log("ensureCartInSession: error finding the cart, probably doesn't exist at this point");
+            } else {
+                if (cart) {
+                    req.session.cart = cart; // stick around for the session
+                    return next();
+                } else {
+                    console.log('ensureCartInSession: Create me a cart for user with id = ' + req.user._id);
+                    Cart.create({
+                      user: req.user._id
+                    }, function(err, cart) {
+                      req.session.cart = cart;
+                      return next();
+                    }); // end of Cart.create
+                } // end of else
+            }; // end of findOne callback function
         });
-      }
-    });
-  }
+    }
 };
+
 
 router.post('/contents', jsonParser);
 router.post('/contents', ensureCartInSession);
