@@ -4,6 +4,7 @@ var bodyParser = require('body-parser'); //parser for json
 var util = require('util');
 var User = require('./../lib/users.js'); //Model
 var Item = require('./../lib/items.js');
+var accounting = require('accounting');
 
 
 var jsonParser = bodyParser.json();
@@ -89,6 +90,7 @@ router.get('/:id', function(req, res) {
       Item.findOne({
         _id: product
       }, function(err, productFound) {
+        productFound.price = accounting.formatMoney(productFound.price);
         productList.push(productFound);
         console.log(productFound);
       })

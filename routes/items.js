@@ -2,6 +2,7 @@
 var express = require('express');
 var bodyParser = require('body-parser'); //parser for json
 var Item = require('../lib/items.js'); //Model
+var accounting = require('accounting');
 
 var jsonParser = bodyParser.json();
 
@@ -64,60 +65,66 @@ router.delete('/api/:id', function(req, res) {
 
 //jade rendered routes
 router.get('/', function(req, res) {
-  Item.find({}, function(error, itemList) {
-    if(error){
-      console.log('Error getting items');
-    } else {
-      if (req.session.cart) {
-        res.render('items', {
-        items: itemList,
-        user: req.user,
-        cartCount: req.session.cart.products.length
-        });
-      } else {
-        res.render('items', {
-        items: itemList,
-        user: req.user
+    Item.find({}, function(error, itemList) {
+      if (error) {
+        console.log('Error getting items');
+      } else { << << << < HEAD
+        if (req.session.cart) {
+          res.render('items', {
+            items: itemList,
+            user: req.user,
+            cartCount: req.session.cart.products.length
           });
-      }
-    }
-  });
-});
-
-router.get('/:id', function(req, res) {
-  Item.find({
-    _id: req.params.id
-  }, function(error, item) {
-    if (error) {
-      console.log('Error getting one item');
-    } else {
-      if (req.session.cart) {
-        res.render('item', {
-        items: item,
-        user: req.user,
-        cartCount: req.session.cart.products.length
+        } else {
+          res.render('items', { === === =
+                console.log("/items user is " + req.user);
+              console.log("/items are " + itemList);
+              res.render('items', { >>> >>> > adding accounting.js format money
+                for prices
+                items: itemList,
+                user: req.user
+              });
+            }
+          }
         });
-      } else {
-        res.render('item', {
-        items: item,
-        user: req.user
-          });
-      }
-    }
-  });
-});
+    });
 
-router.delete('/:id', function(req, res) {
-  Item.remove({
-    _id: req.params.id
-  }, function(error) {
-    if (error) {
-      console.log(error);
-      res.sendStatus(400);
-    } else {
-      res.sendStatus(204);
-    }
-  });
-});
+    router.get('/:id', function(req, res) {
+      var price = accounting.formatMoney(item[0].price);
+      Item.find({
+        _id: req.params.id
+      }, function(error, item) {
+        if (error) {
+          console.log('Error getting one item');
+        } else {
+          if (req.session.cart) {
+            res.render('item', {
+              items: item,
+              user: req.user,
+              cartCount: req.session.cart.products.length
+            });
+          } else {
+            res.render('item', {
+              items: item,
+              user: req.user,
+              price: price
+            });
+          }
+        }
+      });
+    });
 
-module.exports = router;
+    router.delete('/:id', function(req, res) {
+      Item.remove({
+        _id: req.params.id
+      }, function(error) {
+        if (error) {
+          console.log(error);
+          res.sendStatus(400);
+        } else {
+          res.sendStatus(204);
+        }
+      });
+    });
+
+    module.exports = router;
