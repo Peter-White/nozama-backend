@@ -101,8 +101,6 @@ router.get('/:id', function(req, res) {
         cartCount: req.session.cart.products.length
       });
     }, 1000)
-
-
   } else {
     res.redirect('/');
   }
