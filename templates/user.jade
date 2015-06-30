@@ -15,9 +15,11 @@ block main
             #myTabContent.tab-content
               #tab-1.tab-pane.active(role='tabpanel')
                   .user(data-user="#{user._id}")
-                    each product in products
-                      li name : #{product.itemName}
-                      img(class=['img-responsive', 'thumbnail'], style="width:100px",src=product.photoURL)
+                    ul.list-group
+                      each product in products
+                        li.list-group-item #{product.itemName} - $ #{product.price} -
+                          img(class=['img-responsive', 'thumbnail'], style="width:100px",src=product.photoURL)
+                    h4.total The total for this order is: $#{total}
                     .btn-group
                         a.btn.btn-default.buttons(href='/#') Checkout
                         a.btn.btn-default.buttons(href='/items/') Keep Shopping

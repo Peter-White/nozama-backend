@@ -21,12 +21,11 @@ body {
 .maincontent {
   padding-top: 40px;
 }
-.item-container {
-  height: 400px;
-  -webkit-transition:1s ease-in-out;
+.img-hover:hover {
+  opacity: 0.6;
 }
-.item-container:hover {
-  background-color: blue;
+.item-container {
+  height: 500px;
 }
 @media (max-width: 992px) {
   .item-container {

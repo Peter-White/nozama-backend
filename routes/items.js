@@ -67,15 +67,20 @@ router.get('/', function(req, res) {
   Item.find({}, function(error, itemList) {
     if(error){
       console.log('Error getting items');
-    } else{
-      console.log("/items user is " + req.user);
-      console.log("/items are " + itemList);
-      res.render('items', {
-        items: itemList,
-        user: req.user
-      });
+    } else {
+      if (req.session.cart) {
+        res.render('items', {
+          items: itemList,
+          user: req.user,
+          cartCount: req.session.cart.products.length
+        });
+      } else {
+        res.render('items', {
+          items: itemList,
+          user: req.user
+          });
+      }
     }
-
   });
 });
 
@@ -83,10 +88,22 @@ router.get('/:id', function(req, res) {
   Item.find({
     _id: req.params.id
   }, function(error, item) {
-    res.render('item', {
-      items: item,
-      user: req.user
-    });
+    if (error) {
+      console.log('Error getting one item');
+    } else {
+      if (req.session.cart) {
+        res.render('item', {
+        items: item,
+        user: req.user,
+        cartCount: req.session.cart.products.length
+        });
+      } else {
+        res.render('item', {
+        items: item,
+        user: req.user
+          });
+      }
+    }
   });
 });
 

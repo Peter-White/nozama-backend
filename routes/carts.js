@@ -17,11 +17,12 @@ router.get('/contents', function(req, res) {
   });
 });
 
-router.get('/contents', function(req, res) {
-  Cart.find({}, function(err, items) {
-    res.json(items);
-  })
-});
+// router.get('/contents', function(req, res) {
+//   Cart.find({}, function(err, items) {
+//     res.json(items);
+//   })
+// });
+
 
 var ensureCartInSession = function(req, res, next) {
   if (req.session.cart) {
@@ -66,6 +67,8 @@ router.post('/contents', function(req, res) {
 
   req.session.cart.products.push(req.body.products);
   console.log('Adding product to cart, AFTER products are : ' + util.inspect(req.session.cart.products));
+  var cartCount = req.session.cart.products.length;
+  // console.log("hello, I count the items in the cart: " + cartCount);
   //  res.send(req.session.cart);
   //  res.status(200);
   req.session.save(function(err, cart) {
@@ -81,17 +84,5 @@ router.post('/contents', function(req, res) {
 });
 
 
-
-
-router.post('/api', function(req, res) {
-  User.create(req.body, function(error, user) {
-    if (error) {
-      console.log(error);
-      res.sendStatus(400);
-    } else {
-      res.sendStatus(201);
-    }
-  });
-});
 
 module.exports = router;
