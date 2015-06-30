@@ -19,7 +19,6 @@ var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
 var cartsRouter = require('./routes/carts');
 
-
 // commented out during merge on monday evening
 
 // //// MONGO TEMPLATE
