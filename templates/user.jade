@@ -13,6 +13,8 @@ block main
                 a(href='#tab-2' data-toggle='tab' role='tab' aria-control='tab-2') My Account Details
               li(role='presentation')
                 a(href='#tab-3' data-toggle='tab' role='tab' aria-control='tab-3') My Order History
+              li(role='presentation')
+                a(href='#tab-4' data-toggle='tab' role='tab' aria-control='tab-4') Add to Catalog
             #myTabContent.tab-content
               #tab-1.tab-pane.active(role='tabpanel')
                   .user(data-user="#{user._id}")
@@ -48,5 +50,44 @@ block main
               include update-user-form.jade
               #tab-3.tab-pane(role='tabpanel')
                   .user(data-user="#{user._id}")
-
-
+              #tab-4.tab-pane
+                .user(data-user="#{user._id}")
+                  form(role="form", action="/users/additem", method="post")
+                      .form-group
+                          label(for="itemName") Item Name
+                          input#itemName.form-control(name="itemName", type="text")
+                      .form-group
+                          label(for="description") Description
+                          textarea#description.form-control(name="description", type="text")
+                      .form-group
+                          label(for="price") Price
+                          input#price.form-control(name="price", type="text")
+                      .form-group
+                          label(for="photoURL") Photo URL
+                          input#photoURL.form-control(name="photoURL", type="text")
+                      .form-group
+                          label(for="tags") Tags
+                      p
+                          .container.tagbox
+                              <input type="checkbox" name="tags" value="beauty"> beauty
+                              <br>
+                              <input type="checkbox" name="tags" value="body"> body
+                              <br>
+                              <input type="checkbox" name="tags" value="cactus"> cactus
+                              <br>
+                              <input type="checkbox" name="tags" value="face"> face
+                              <br>
+                              <input type="checkbox" name="tags" value="flowering"> flowering
+                              <br>
+                              <input type="checkbox" name="tags" value="foods"> foods
+                              <br>
+                              <input type="checkbox" name="tags" value="health"> health
+                              <br>
+                              <input type="checkbox" name="tags" value="oils"> oils
+                              <br>
+                              <input type="checkbox" name="tags" value="organic"> organic
+                              <br>
+                              <input type="checkbox" name="tags" value="plants"> plants
+                              <br>
+                          .container.itembuttons
+                              button.btn.btn-default(type="submit", name="AddItem", value="AddItem") Add Item To Catalog

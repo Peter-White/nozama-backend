@@ -19,6 +19,7 @@ var itemsRouter = require('./routes/items');
 var usersRouter = require('./routes/users');
 var cartsRouter = require('./routes/carts');
 
+
 // commented out during merge on monday evening
 
 // //// MONGO TEMPLATE
@@ -55,21 +56,7 @@ var cartsRouter = require('./routes/carts');
 
 var session = require('express-session');
 
-var MongooseSessionStore = require('connect-mongoose-session-store')(session);
-
-var mongooseStore = new MongooseSessionStore({
-  db: 'mongodb://localhost/nozama'
-});
-
-app.use(session({
-  store: mongooseStore,
-  secret: 'SESSION_KEY',
-  resave: false,
-  saveUninitialized: true
-}));
-
 var checkoutRouter = require('./routes/checkout');
-var addRouter = require('./routes/additem');
 
 //Setup
 var app = express();
@@ -116,7 +103,6 @@ passport.deserializeUser(User.deserializeUser());
 //all routes
 app.use('/auth', auth);
 app.use('/items', itemsRouter);
-app.use('/additem', addRouter);
 app.use('/users', usersRouter);
 app.use('/checkout', checkoutRouter);
 app.use('/carts', cartsRouter);

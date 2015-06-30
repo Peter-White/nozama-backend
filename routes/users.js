@@ -154,5 +154,38 @@ router.delete('/:id', function(req, res) {
   });
 });
 
+// Add Item
+var Item = require('../lib/items');
+router.route('/additem')
+  .get(function(req, res, next) {
+    res.render('additem', {});
+  })
+  .post(function(req, res, next) {
+    console.log(util.inspect(req.body));
+    Item.create({
+        itemName: req.body.itemName,
+        description: req.body.description,
+        price: req.body.price,
+        photoURL: req.body.photoURL,
+        tags: req.body.tags
+      },
+
+      function(err, item) {
+
+        if (err) {
+          res.redirect('/users/:id');
+          console.log("Error adding item");
+          return res.render('additem', {
+            item: item
+          });
+        } else {
+          console.log("Adding item: " + util.inspect(item));
+          req.login(item, function(err) {
+            res.redirect('/items');
+          });
+        }
+      })
+  })
+// End
 
 module.exports = router;

@@ -20,23 +20,15 @@ router.route('/register')
 
       function(err, user) {
         if (err) {
-          res.redirect('/register/registererror');
           return res.render('register', {
             user: user
           });
         }
         req.login(user, function(err) {
-          res.redirect('/register/registersuccess');
+          res.redirect('/');
         });
       })
   })
-
-router.get('/registererror', function(req, res) {
-  res.render('registererror', {});
-});
-router.get('/registersuccess', function(req, res) {
-  res.render('registersuccess', {});
-});
 
 router.get('/login', function(req, res, next) {
   res.render('login', {
@@ -75,6 +67,30 @@ router.get('/', isAuthenticated, function(req, res) {
 router.get('/pay', function(req, res) {
   res.render('stripe');
 })
+
+// Final Page
+
+router.get('/pay/checkout', function(req, res) {
+  res.render('checkout', {});
+// Nodemailer
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'nozamaorganics@gmail.com',
+        pass: 'peacelily'
+    }
+});
+transporter.sendMail({
+    from: 'nozamaorganics@gmail.com',
+    to: 'pwhite007@icloud.com',
+    subject: 'Thank You',
+    text: 'Your purchase has been processsed and your order will be shipped soon. Have a nice day.'
+});
+// Oh God, please work
+});
+
+// End
 
 
 router.post('/cardSubmit', function(req, res) {
