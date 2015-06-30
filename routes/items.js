@@ -90,41 +90,40 @@ router.get('/', function(req, res) {
     });
 
     router.get('/:id', function(req, res) {
-      var price = accounting.formatMoney(item[0].price);
-      Item.find({
-        _id: req.params.id
-      }, function(error, item) {
-        if (error) {
-          console.log('Error getting one item');
-        } else {
-          if (req.session.cart) {
-            res.render('item', {
-              items: item,
-              user: req.user,
-              cartCount: req.session.cart.products.length
-            });
+        var price = accounting.formatMoney((item[0].price), [thousand = ","], [decimal = "."], [format = "%s%v"]);
+        Item.find({
+          _id: req.params.id
+        }, function(error, item) {
+          if (error) {
+            console.log('Error getting one item');
           } else {
-            res.render('item', {
-              items: item,
-              user: req.user,
-              price: price
-            });
+            if (req.session.cart) {
+              res.render('item', {
+                items: item,
+                user: req.user,
+                cartCount: req.session.cart.products.length
+              });
+            } else {
+              res.render('item', {
+                items: item,
+                user: req.user,
+                price: price
+              });
+            }
           }
-        }
-      });
-    });
+        });
 
-    router.delete('/:id', function(req, res) {
-      Item.remove({
-        _id: req.params.id
-      }, function(error) {
-        if (error) {
-          console.log(error);
-          res.sendStatus(400);
-        } else {
-          res.sendStatus(204);
-        }
-      });
-    });
+        router.delete('/:id', function(req, res) {
+          Item.remove({
+            _id: req.params.id
+          }, function(error) {
+            if (error) {
+              console.log(error);
+              res.sendStatus(400);
+            } else {
+              res.sendStatus(204);
+            }
+          });
+        });
 
-    module.exports = router;
+        module.exports = router;
