@@ -20,15 +20,23 @@ router.route('/register')
 
       function(err, user) {
         if (err) {
+          res.redirect('/register/registererror');
           return res.render('register', {
             user: user
           });
         }
         req.login(user, function(err) {
-          res.redirect('/');
+          res.redirect('/register/registersuccess');
         });
       })
   })
+
+router.get('/registererror', function(req, res) {
+  res.render('registererror', {});
+});
+router.get('/registersuccess', function(req, res) {
+  res.render('registersuccess', {});
+});
 
 router.get('/login', function(req, res, next) {
   res.render('login', {

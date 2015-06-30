@@ -29,7 +29,7 @@ router.route('/')
         } else {
           console.log("Adding item: " + util.inspect(item));
           req.login(item, function(err) {
-            res.redirect('/itemsuccess');
+            res.redirect('/additem/itemsuccess');
           });
         }
       })
