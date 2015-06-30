@@ -60,11 +60,11 @@ block main
             b Experimental
             span
 
-  .container.maincontent
+  .container-fluid.maincontent
     .row
       .items
         each item in items
-          .card.card--big.col-md-6
+          .card.card--big.col-sm-3
             a(href='/items/#{item._id}')
               div.card__image(style='background-image: url(#{item.photoURL}); background-size:cover')
               h2.card__title #{item.itemName}

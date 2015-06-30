@@ -80,13 +80,13 @@ button {
 }
 .card {
   will-change: transform;
-  margin: 8px;
+  margin-top:5px;
   position: relative;
   border-radius: 2px;
   overflow: hidden;
   background-color: #fafafa;
   height: 35%;
-  width: 344px;
+  /*width: 344px;*/
   -webkit-transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
           transition: all 400ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
@@ -205,7 +205,7 @@ button {
   color: #ff1744;
 }
 .card--big {
-  box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);
+  /*box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.3), 0 17px 17px 0 rgba(0, 0, 0, 0.15);*/
   height: 370px;
   min-height: 304px;
 }

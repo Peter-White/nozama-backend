@@ -8,6 +8,7 @@ block main
              li.active(role='presentation')
                 a(href='#tab-1' data-toggle='tab' role='tab' aria-control='tab-1') My &nbsp;
                   span(class='glyphicon glyphicon-shopping-cart')
+                  span #{cartCount}
               li(role='presentation')
                 a(href='#tab-2' data-toggle='tab' role='tab' aria-control='tab-2') My Account Details
               li(role='presentation')
@@ -24,7 +25,10 @@ block main
                           button.btn.btn-default.buttons.delete-button(data-product="#{product._id}") Delete Item
                     h4.total The total for this order is: $#{total}
                     .btn-group
-                        a.btn.btn-default.buttons(href='/#') Checkout
+                        a.btn.btn-default.buttons
+                          form(role="form", action="/auth/cardSubmit", method="post")
+                            script(src="https://checkout.stripe.com/checkout.js", class="stripe-button",
+                            data-key="pk_test_4cwLM2EukepBtP2SGrNjqFF2", data-amount= '#{total}', data-name="Thanks from @Nozama", data-description="#{cartCount} Items")
                         a.btn.btn-default.buttons(href='/items/') Keep Shopping
               #tab-2.tab-pane(role='tabpanel' aria-labeledby='#{user._id}')
                 .user(data-user="#{user._id}")

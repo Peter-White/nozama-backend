@@ -102,6 +102,9 @@ router.get('/:id', function(req, res) {
         total: total,
         cartCount: req.session.cart.products.length
       });
+      console.log('total is' + total)
+      req.session.cart.total = total;
+      console.log('TOTAL OF CART' + req.session.cart.total);
     }, 1000)
 
   } else {

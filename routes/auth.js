@@ -80,7 +80,7 @@ router.post('/cardSubmit', function(req, res) {
   var stripeToken = req.body.stripeToken;
 
   var charge = stripe.charges.create({
-    amount: 100, // amount in cents, again
+    amount: req.session.cart.total,
     currency: "usd",
     source: stripeToken,
     description: "Example charge"
