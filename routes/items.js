@@ -70,14 +70,14 @@ router.get('/', function(req, res) {
     } else {
       if (req.session.cart) {
         res.render('items', {
-        items: itemList,
-        user: req.user,
-        cartCount: req.session.cart.products.length
+          items: itemList,
+          user: req.user,
+          cartCount: req.session.cart.products.length
         });
       } else {
         res.render('items', {
-        items: itemList,
-        user: req.user
+          items: itemList,
+          user: req.user
           });
       }
     }

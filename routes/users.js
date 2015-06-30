@@ -83,21 +83,24 @@ router.get('/:id', function(req, res) {
   console.log("This user's cart is " + util.inspect(req.session.cart));
 
   if (req.session.cart) {
-
+    var total = 0;
     req.session.cart.products.forEach(function(product) {
 
       Item.findOne({
         _id: product
       }, function(err, productFound) {
+        total += productFound.price;
         productList.push(productFound);
         console.log(productFound);
       })
     })
 
+
     setTimeout(function() {
       res.render('user', {
         user: req.user,
         products: productList,
+        total: total,
         cartCount: req.session.cart.products.length
       });
     }, 1000)
