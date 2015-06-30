@@ -67,18 +67,17 @@ router.delete('/api/:id', function(req, res) {
 });
 
 // Jade (rendered) routes for users
-router.get('/', function(req, res) {
-  User.find({}, function(error, userList) {
-    console.log(req.user);
-    res.render('users', {
-      users: userList,
-      user: req.user
-    });
-  });
-});
+// router.get('/', function(req, res) {
+//   User.find({}, function(error, userList) {
+//     res.render('users', {
+//       users: userList,
+//       user: req.user,
+//     });
+//     console.log("Hello I count the items in the cart " + req.session.cart.products.length);
+//   });
+// });
 
 router.get('/:id', function(req, res) {
-
   // console.log(req.user);
   var productList = [];
   console.log("This user's cart is " + util.inspect(req.session.cart));
@@ -95,13 +94,14 @@ router.get('/:id', function(req, res) {
       })
     })
 
-
     setTimeout(function() {
       res.render('user', {
         user: req.user,
-        products: productList
+        products: productList,
+        cartCount: req.session.cart.products.length
       });
-    }, 0)
+    }, 1000)
+
 
   } else {
     res.redirect('/');
