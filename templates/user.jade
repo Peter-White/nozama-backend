@@ -21,7 +21,7 @@ block main
                           h4 #{product.itemName}
                         li.list-group-item Price: $ #{product.price}
                           img(class=['img-responsive', 'thumbnail'], style="width:100px",src=product.photoURL)
-                          button.btn.btn-default.buttons(href='/#') Delete
+                          button.btn.btn-default.buttons.delete-button(data-product="#{product._id}") Delete Item
                     h4.total The total for this order is: $#{total}
                     .btn-group
                         a.btn.btn-default.buttons(href='/#') Checkout
