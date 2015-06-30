@@ -65,11 +65,17 @@ router.delete('/api/:id', function(req, res) {
 //jade rendered routes
 router.get('/', function(req, res) {
   Item.find({}, function(error, itemList) {
-    console.log(req.user);
-    res.render('items', {
-      items: itemList,
-      user: req.user
-    });
+    if(error){
+      console.log('Error getting items');
+    } else{
+      console.log("/items user is " + req.user);
+      console.log("/items are " + itemList);
+      res.render('items', {
+        items: itemList,
+        user: req.user
+      });
+    }
+
   });
 });
 

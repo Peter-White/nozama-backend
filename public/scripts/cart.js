@@ -6,7 +6,7 @@ $(document).ready(function() {
         method: 'POST',
         url: 'http://localhost:3000/carts/contents',
         data: JSON.stringify({
-          product: product,
+          products: product,
           user: user
         }),
         contentType: "application/json; charset=utf-8"
