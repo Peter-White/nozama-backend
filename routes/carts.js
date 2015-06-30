@@ -83,6 +83,26 @@ router.post('/contents', function(req, res) {
 
 });
 
+router.delete('/:id', function(req, res) {
+  Cart.findOne({
+      user: req.user._id
+    }, function(err, cart) {
+      if (err) {
+        console.log("Error finding a cart");
+      } else {
+        res.render(cart)
+      }
 
+  Cart.remove({
+    _id: req.params.id
+  }, function(error) {
+    if (error) {
+      console.log(error);
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(204);
+    }
+  });
+});
 
 module.exports = router;

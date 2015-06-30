@@ -95,7 +95,6 @@ router.get('/:id', function(req, res) {
       })
     })
 
-
     setTimeout(function() {
       res.render('user', {
         user: req.user,

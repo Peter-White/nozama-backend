@@ -15,10 +15,13 @@ block main
             #myTabContent.tab-content
               #tab-1.tab-pane.active(role='tabpanel')
                   .user(data-user="#{user._id}")
-                    ul.list-group
+                    ul.inline-block.list-group
                       each product in products
-                        li.list-group-item #{product.itemName} - $ #{product.price} -
+                        li.list-group-item
+                          h4 #{product.itemName}
+                        li.list-group-item Price: $ #{product.price}
                           img(class=['img-responsive', 'thumbnail'], style="width:100px",src=product.photoURL)
+                          button.btn.btn-default.buttons(href='/#') Delete
                     h4.total The total for this order is: $#{total}
                     .btn-group
                         a.btn.btn-default.buttons(href='/#') Checkout
