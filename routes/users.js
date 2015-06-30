@@ -78,6 +78,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/:id', function(req, res) {
+
   // console.log(req.user);
   var productList = [];
   console.log("This user's cart is " + util.inspect(req.session.cart));
@@ -148,7 +149,6 @@ router.delete('/:id', function(req, res) {
     }
   });
 });
-
 
 
 module.exports = router;
