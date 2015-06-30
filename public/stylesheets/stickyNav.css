@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -10,10 +10,10 @@ Primary style
 }
 
 body {
-  font-size: 100%;
+  font-size: 120%;
   font-family: "Open Sans", sans-serif;
   color: #030d18;
-  background-color: #f0eee1;
+  background-color: #ecf0f1;
 }
 
 a {
@@ -24,8 +24,7 @@ a {
 img {
   max-width: 100%;
 }
-
-/* -------------------------------- 
+/* --------------------------------
 
 Modules - reusable parts of our design
 
@@ -81,7 +80,7 @@ Modules - reusable parts of our design
     margin-top: 70px;
   }
 }
-/* -------------------------------- 
+/* --------------------------------
 
 Navigation
 
@@ -106,10 +105,11 @@ Navigation
 
 #cd-logo {
   float: left;
-  margin: 13px 0 0 5%;
+  margin: 0 0 0 0;
 }
 #cd-logo img {
   display: block;
+  margin: -13px 0 0 0;
 }
 @media only screen and (min-width: 768px) {
   #cd-logo {
@@ -209,7 +209,7 @@ Navigation
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Intro
 
@@ -217,9 +217,11 @@ Intro
 #cd-intro {
   position: relative;
   height: 300px;
-  background: url(../img/intro-background.jpg) no-repeat center center;
+  background: url('https://unsplash.imgix.net/photo-1429966163023-c132bc887fdd?fit=crop&fm=jpg&h=600&q=75&w=1050') no-repeat center center;
   background-size: cover;
   z-index: 2;
+  color: white;
+  margin-top: -70px;
 }
 #cd-intro #cd-intro-tagline {
   width: 90%;
@@ -232,7 +234,6 @@ Intro
   font-size: 24px;
   font-size: 1.5rem;
   font-weight: 300;
-  color: #030d18;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 @media only screen and (min-width: 768px) {
@@ -291,7 +292,7 @@ Intro
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Secondary Fixed Navigation
 
@@ -410,7 +411,7 @@ Secondary Fixed Navigation
     -o-transform: translateX(-50%);
     transform: translateX(-50%);
     background-repeat: no-repeat;
-    background-image: url(../img/cd-nav-icons.svg);
+    background-image: url(../assets/cd-nav-icons.svg);
     -webkit-transition: opacity 0.2s;
     -moz-transition: opacity 0.2s;
     transition: opacity 0.2s;
@@ -550,7 +551,7 @@ Secondary Fixed Navigation
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
 Placeholder Sections
 

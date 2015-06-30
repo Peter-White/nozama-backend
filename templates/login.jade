@@ -1,6 +1,27 @@
 extends layout
 
 block main
+    header.cd-header
+        #cd-logo
+          a(href='/')
+            img(src='/assets/noun_90169_cc.png', alt='Logo')
+        nav.cd-primary-nav
+          ul
+            if (user)
+                li#current-user(data-user-id='#{user._id}')
+                  a(href="/users/#{user._id}") Hi #{user.username} (My Account)
+                li
+                  a(href="/auth/logout") Logout
+                li
+                  a(href='#')
+                    span(class='glyphicon glyphicon-shopping-cart')
+              else
+                li
+                  a(href="/auth/login") Login
+                li
+                  a(href="/auth/register") Register
+            li
+              a(href='#0') Search
     .container.maincontent
         .row
             .col-lg-12

@@ -16,8 +16,8 @@ block main
               #tab-1.tab-pane.active(role='tabpanel')
                   .user(data-user="#{user._id}")
                     each product in products
-                      li.inline #{product.itemName} - #{product.price} -
-                        img(class=['img-responsive', 'thumbnail'], style="width:100px",src=product.photoURL)
+                      li name : #{product.itemName}
+                      img(class=['img-responsive', 'thumbnail'], style="width:100px",src=product.photoURL)
                     .btn-group
                         a.btn.btn-default.buttons(href='/#') Checkout
                         a.btn.btn-default.buttons(href='/items/') Keep Shopping

@@ -101,7 +101,7 @@ router.get('/:id', function(req, res) {
         user: req.user,
         products: productList
       });
-    }, 0)
+    }, 1000)
 
   } else {
     res.redirect('/');

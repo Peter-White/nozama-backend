@@ -1,20 +1,76 @@
 extend layout
 block main
-  header.introheader(style="background-image:url('https://unsplash.imgix.net/photo-1429966163023-c132bc887fdd?fit=crop&fm=jpg&h=600&q=75&w=1050'); height: 500px; background-size:cover;")
-    .container.headtext
-      h1(style='color:white') Welcome to Nozama
-      h3(style='color:white') purveyors of fine organic goods from across the world
-      button.btn.btn-success Learn More
+
+  section#cd-intro(style="")
+    #cd-intro-tagline
+      h2 Welcome to Nozama
+      h1 purveyors of fine goods from across the globe
+      a.cd-btn(href='#') Browse Our Products
+    header.cd-header
+      #cd-logo
+        a(href='/')
+          img(src='/assets/noun_90169_cc.png', alt='Logo')
+      nav.cd-primary-nav
+        ul
+          if (user)
+              li#current-user(data-user-id='#{user._id}')
+                a(href="/users/#{user._id}") Hi #{user.username} (My Account)
+              li
+                a(href="/auth/logout") Logout
+              li
+                a(href='#')
+                  span(class='glyphicon glyphicon-shopping-cart')
+            else
+              li
+                a(href="/auth/login") Login
+              li
+                a(href="/auth/register") Register
+          li
+            a(href='#0') Search
+  .cd-secondary-nav
+    a.cd-secondary-nav-trigger(href='#0')
+      | Menu
+      span
+    // button visible on small devices
+    nav
+      ul
+        li
+          a(href='#cd-placeholder-1')
+            b Plants
+            span
+            // icon
+        li
+          a(href='#cd-placeholder-2')
+            b Food
+            span
+            // icon
+        li
+          a(href='#cd-placeholder-3')
+            b Beauty
+            span
+            // icon
+        li
+          a(href='#cd-placeholder-4')
+            b Health
+            span
+            // icon
+        li
+          a(href='#cd-placeholder-5')
+            b Experimental
+            span
+
   .container.maincontent
     .row
       .items
         each item in items
-          .col-md-3.item-container
+          .card.card--big.col-md-6
             a(href='/items/#{item._id}')
-              img(class=['img-responsive', 'img-hover', 'thumbnail'] src='#{item.photoURL}')
-            .caption
-              a(href='/items/#{item._id}') #{item.itemName}
-              p #{item.description}
-
+              div.card__image(style='background-image: url(#{item.photoURL}); background-size:cover')
+              h2.card__title #{item.itemName}
+              span.card__subtitle By Mattia Astorino
+              p.card__text #{item.description}
+              div.card__action-bar
+                button.card__button Add to Cart
+                button.card__button More Info
 
 

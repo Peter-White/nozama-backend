@@ -1,20 +1,41 @@
 extend layout
 block main
-  .container.maincontent
-    .row
-      .col-lg-12
-        .row
-          .items
-            each item in items
-                .col-md-6
-                  img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}' width='400px')
-                .col-md-6
-                  h3 #{item.itemName}
-                  p #{item.description}
-                  h4 Price: $ #{item.price}
-                  .btn-group
-                    button.btn.btn-default.buttons.add-to-cart(data-product-id='#{item._id}') Add To &nbsp;
-                      span(class='glyphicon glyphicon-shopping-cart')
-                    a.btn.btn-default.buttons(href='/items/') Keep Shopping
+  header.cd-header
+    #cd-logo
+      a(href='#0')
+        img(src='/assets/noun_90169_cc.png', alt='Logo')
+    nav.cd-primary-nav
+      ul
+        if (user)
+            li#current-user(data-user-id='#{user._id}')
+              a(href="/users/#{user._id}") Hi #{user.username} (My Account)
+            li
+              a(href="/auth/logout") Logout
+            li
+              a(href='#')
+                span(class='glyphicon glyphicon-shopping-cart')
+          else
+            li
+              a(href="/auth/login") Login
+            li
+              a(href="/auth/register") Register
+        li
+          a(href='#0') Search
+    .container.maincontent
+      .row
+        .col-lg-12
+          .row
+            .items
+              each item in items
+                  .col-md-6
+                    img(class=['img-responsive', 'img-thumbnail'] src='#{item.photoURL}' width='400px')
+                  .col-md-6
+                    h3 #{item.itemName}
+                    p #{item.description}
+                    h4 Price: $ #{item.price}
+                    .btn-group
+                      button.btn.btn-default.buttons.add-to-cart(data-product-id='#{item._id}') Add To &nbsp;
+                        span(class='glyphicon glyphicon-shopping-cart')
+                      a.btn.btn-default.buttons(href='/items/') Keep Shopping
 
 
