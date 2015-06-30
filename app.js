@@ -21,15 +21,39 @@ var cartsRouter = require('./routes/carts');
 
 
 
-//// MONGO TEMPLATE
+// commented out during merge on monday evening
 
-var session = require('express-session');
-var MongoSessionDB = require('connect-mongodb-session')(session);
+// //// MONGO TEMPLATE
 
-var mongoStore = new MongoSessionDB({
-  uri: 'MONGO_URL',
-  collection: 'webSessions'
-});
+// var session = require('express-session');
+// var MongoSessionDB = require('connect-mongodb-session')(session);
+
+// var mongoStore = new MongoSessionDB({
+//   uri: 'MONGO_URL',
+//   collection: 'webSessions'
+// });
+
+// comment monday ends here
+
+
+// Setup to store session in mongo.
+// var MongoSessionDB = require('connect-mongodb-session')(session);
+// var mongoStore = new MongoSessionDB({
+//   uri: 'mongodb://localhost/nozama',
+//   collection: 'webSessions'
+// });
+
+// Setup to store session in mongo BUT using mongoose to ACTUALLY save
+// the session. Mongoose prevents circular references between objects
+// stored in Mongo.
+// DOESN'T WORK FOR SHIT!!! FUCK IT, LETS GO BACK TO SESSION STORED IN MEMORY!!!
+// var MongooseSessionStore = require('connect-mongoose-session-store')(session);
+// // var MongooseSessionStore = require('connect-mongoose-session-store')(express);
+
+// var mongooseStore = new MongooseSessionStore({
+//   db: 'mongodb://localhost/nozama'
+// });
+
 
 app.use(session({
   store: mongoStore,
@@ -82,13 +106,24 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(cookieParser());
+
+// Insert Mongo session middleware
+// app.use(cookieParser());
 app.use(session({
-  store: mongoStore,
+  // store: mongoStore,
   secret: 'nozama',
   resave: false,
   saveUninitialized: false
 }));
+
+// Insert Mongoose session middleware
+// app.use(session({
+//   store: mongooseStore,
+//   secret: 'SESSION_KEY',
+//   resave: false,
+//   saveUninitialized: true
+// }));
+
 app.use(stylus.middleware({
   src: __dirname + '/public',
   compile: compile

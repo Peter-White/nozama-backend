@@ -15,9 +15,12 @@ block main
             #myTabContent.tab-content
               #tab-1.tab-pane.active(role='tabpanel')
                   .user(data-user="#{user._id}")
-                      .btn-group
-                          a.btn.btn-default.buttons(href='/#') Checkout
-                          a.btn.btn-default.buttons(href='/items/') Keep Shopping
+                    each product in products
+                      li.inline #{product.itemName} - #{product.price} -
+                        img(class=['img-responsive', 'thumbnail'], style="width:100px",src=product.photoURL)
+                    .btn-group
+                        a.btn.btn-default.buttons(href='/#') Checkout
+                        a.btn.btn-default.buttons(href='/items/') Keep Shopping
               #tab-2.tab-pane(role='tabpanel' aria-labeledby='#{user._id}')
                 .user(data-user="#{user._id}")
                   p Name: #{user.firstName} #{user.lastName}

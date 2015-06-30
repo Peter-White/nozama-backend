@@ -1,7 +1,9 @@
 //requires
 var express = require('express');
 var bodyParser = require('body-parser'); //parser for json
+var util = require('util');
 var User = require('./../lib/users.js'); //Model
+var Item = require('./../lib/items.js');
 
 
 var jsonParser = bodyParser.json();
@@ -65,19 +67,35 @@ router.delete('/api/:id', function(req, res) {
 });
 
 // Jade (rendered) routes for users
-// router.get('/', function(req, res) {
-//   User.find({}, function(error, userList) {
-//     res.render('users', {
-//       users: userList
-//     });
-//   });
-// });
+router.get('/', function(req, res) {
+  User.find({}, function(error, userList) {
+    console.log(req.user);
+    res.render('users', {
+      users: userList,
+      user: req.user
+    });
+  });
+});
 
 router.get('/:id', function(req, res) {
   // console.log(req.user);
-  res.render('user', {
-    user: req.user
-  });
+  var productList = [];
+  console.log("This user's cart is " + util.inspect(req.session.cart));
+
+  req.session.cart.products.forEach(function(product){
+
+    Item.findOne({_id:product}, function(err, productFound){
+    productList.push(productFound);
+    console.log(productFound);
+    })
+  })
+
+setTimeout(function(){
+    res.render('user', {
+    user: req.user,
+    products: productList
+    });
+  }, 0)
 
 });
 
