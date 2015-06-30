@@ -20,15 +20,16 @@ block main
                           a.btn.btn-default.buttons(href='/items/') Keep Shopping
               #tab-2.tab-pane(role='tabpanel' aria-labeledby='#{user._id}')
                 .user(data-user="#{user._id}")
-                  p Name: #{user.firstName} #{user.lastName}
-                  p Username: #{user.username}
-                  p Email Address: #{user.emailAddress}
-                  p Phone Number: #{user.phoneNumber}
-                  p Address:
-                  if (address)
-                    for address in user.address
-                      p Street: #{address.street} #{secondStreet},
-                      p City / State / Zipcode: #{city}, #{state}, #{zipCode}
+                  ul.list-group
+                    li.list-group-item Name: #{user.firstName} #{user.lastName}
+                    li.list-group-item Username: #{user.username}
+                    li.list-group-item Email Address: #{user.emailAddress}
+                    li.list-group-item Phone Number: #{user.phoneNumber}
+                    li.list-group-item Address:
+                    if (address)
+                      for address in user.address
+                        li.list-group-item Street: #{address.street} #{secondStreet},
+                        li.list-group-item City / State / Zipcode: #{city}, #{state}, #{zipCode}
                 .btn-group
                   .btn-group
                     button.btn.btn-default(id="edit-user-details") Edit Account Details

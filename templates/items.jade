@@ -1,15 +1,20 @@
 extend layout
 block main
+  header.introheader(style="background-image:url('https://unsplash.imgix.net/photo-1429966163023-c132bc887fdd?fit=crop&fm=jpg&h=600&q=75&w=1050'); height: 500px; background-size:cover;")
+    .container.headtext
+      h1(style='color:white') Welcome to Nozama
+      h3(style='color:white') purveyors of fine organic goods from across the world
+      button.btn.btn-success Learn More
   .container.maincontent
-        .row
-          .items
-            each item in items
-              .col-md-3.item-container
-                a(href='/items/#{item._id}')
-                  img(class=['img-responsive', 'img-hover', 'thumbnail'] src='#{item.photoURL}')
-                .caption
-                  a(href='/items/#{item._id}') #{item.itemName}
-                  p #{item.description}
+    .row
+      .items
+        each item in items
+          .col-md-3.item-container
+            a(href='/items/#{item._id}')
+              img(class=['img-responsive', 'img-hover', 'thumbnail'] src='#{item.photoURL}')
+            .caption
+              a(href='/items/#{item._id}') #{item.itemName}
+              p #{item.description}
 
 
 

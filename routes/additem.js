@@ -25,7 +25,7 @@ router.route('/')
           return res.render('additem', {
             item: item
           });
-        }else {
+        } else {
           console.log("Adding item: " + util.inspect(item));
           req.login(item, function(err) {
             res.redirect('/items');

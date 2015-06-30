@@ -9,15 +9,21 @@ var router = express.Router();
 
 //API (data) Routes for Users
 router.get('/contents', function(req, res) {
-  Cart.findOne({user: req.user._id})
-  .populate('products')
-  .exec (function(error, cart) {
-    console.log(cart);
-    res.json(cart);
-  });
+  Cart.findOne({
+    user: req.user._id
+  })
+    .populate('products')
+    .exec(function(error, cart) {
+      console.log(cart);
+      res.json(cart);
+    });
 });
 
-
+router.get('/contents', function(req, res) {
+  Cart.find({}, function(err, items) {
+    res.json(items);
+  })
+});
 
 var ensureCartInSession = function(req, res, next) {
   if (req.session.cart) {
@@ -62,7 +68,7 @@ router.post('/contents', function(req, res) {
   console.log(req.session.cart);
   req.session.cart.products.push(req.body.product);
   req.session.cart.save(function(err, cart) {
-    if(err) {
+    if (err) {
       return res.sendStatus(400);
     } else {
       res.send(cart);

@@ -1,37 +1,37 @@
 .container.maincontent
         .row
             .col-lg-12
-                  form(name="update-user")
-                        .form-group
+                  form.list-group(name="update-user")
+                        li.form-group.list-group-item
                               label(for="firstName") First Name
-                              input.form-control(name="firstName", type="text", value=user.firstName)
-                        .form-group
+                              input.form-control(name="firstName", type="text", placeholder= user.firstName)
+                        li.form-group.list-group-item
                               label(for="lastName") Last Name
-                              input.form-control(name="lastName", type="text", value=user.lastName)
-                        .form-group
+                              input.form-control(name="lastName", type="text", placeholder=user.lastName)
+                        li.form-group.list-group-item
                               label(for="phoneNumber") Phone Number
-                              input.form-control(name="phoneNumber", type="text", value=user.phoneNumber)
-                        .form-group
+                              input.form-control(name="phoneNumber", type="text", placeholder=user.phoneNumber)
+                        li.form-group.list-group-item
                               label(for="emailAddress") Email Address
-                              input.form-control(name="emailAddress", type="text", value=user.emailAddress)
-                        .form-group
+                              input.form-control(name="emailAddress", type="text", placeholder=user.emailAddress)
+                        li.form-group.list-group-item
                               label(for="addressType") Address:
-                        .form-group
+                        li.form-group.list-group-item
                               label(for="addressStreet") Street
-                              input.form-control(name="street", type="text", value=user.address.street)
-                        .form-group
+                              input.form-control(name="street", type="text", placeholder=user.address.street)
+                        li.form-group.list-group-item
                               label(for="addressSecondStreet") Second Line (optional)
                               input.form-control(name="secondStreet", type="text")
-                        .form-group
+                        li.form-group.list-group-item
                               label(for="addressCity") City
                               input.form-control(name="city", type="text")
-                        .form-group
+                        li.form-group.list-group-item
                               label(for="addressState") State
                               input.form-control(name="state", type="text")
-                        .form-group
+                        li.form-group.list-group-item
                               label(for="addressZipCode") ZIP Code
                               input.form-control(name="zipCode", type="text")
-                        .form-group
+                        li.form-group.list-group-item
                               label(for="password") Password
                               input.form-control(name="password", type="text")
                         p
