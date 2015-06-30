@@ -80,7 +80,7 @@ button {
 }
 .card {
   will-change: transform;
-  margin-top:5px;
+  margin-top:25px;
   position: relative;
   border-radius: 2px;
   overflow: hidden;
