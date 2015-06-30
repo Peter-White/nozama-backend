@@ -55,8 +55,7 @@ var cartsRouter = require('./routes/carts');
 
 
 var session = require('express-session');
-<<<<<<< HEAD
-=======
+
 var MongooseSessionStore = require('connect-mongoose-session-store')(session);
 
 var mongooseStore = new MongooseSessionStore({
@@ -69,7 +68,6 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
->>>>>>> Added Success Page to Add Item (•_•) ( •_•)>⌐■-■ (⌐■_■)
 
 var checkoutRouter = require('./routes/checkout');
 var addRouter = require('./routes/additem');
