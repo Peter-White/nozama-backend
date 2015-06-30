@@ -54,15 +54,6 @@ var cartsRouter = require('./routes/carts');
 // });
 
 
-app.use(session({
-  store: mongoStore,
-  secret: 'SESSION_KEY',
-  resave: false,
-  saveUninitialized: true
-}));
-
-//// MONGOOSE TEMPLATE
-
 var session = require('express-session');
 
 var checkoutRouter = require('./routes/checkout');
@@ -89,16 +80,11 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
-// Insert Mongo session middleware
-// app.use(cookieParser());
-
-// Insert Mongoose session middleware
-// app.use(session({
-//   store: mongooseStore,
-//   secret: 'SESSION_KEY',
-//   resave: false,
-//   saveUninitialized: true
-// }));
+app.use(session({
+  secret: 'SESSION_KEY',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.use(stylus.middleware({
   src: __dirname + '/public',

@@ -82,20 +82,29 @@ router.get('/:id', function(req, res) {
   var productList = [];
   console.log("This user's cart is " + util.inspect(req.session.cart));
 
-  req.session.cart.products.forEach(function(product){
+  if (req.session.cart) {
 
-    Item.findOne({_id:product}, function(err, productFound){
-    productList.push(productFound);
-    console.log(productFound);
+    req.session.cart.products.forEach(function(product) {
+
+      Item.findOne({
+        _id: product
+      }, function(err, productFound) {
+        productList.push(productFound);
+        console.log(productFound);
+      })
     })
-  })
 
-setTimeout(function(){
-    res.render('user', {
-    user: req.user,
-    products: productList
-    });
-  }, 0)
+
+    setTimeout(function() {
+      res.render('user', {
+        user: req.user,
+        products: productList
+      });
+    }, 0)
+
+  } else {
+    res.redirect('/');
+  }
 
 });
 
